@@ -1,26 +1,39 @@
 ﻿using UdonSharp;
-using UnityEngine;
 using UnityEngine.UI;
 using VRC.SDKBase;
 
 
 public class ButtonEx : UdonSharpBehaviour
 {
-    public VRCUrl urlForWindows;
-    public VRCUrl urlForAndroid;
+    public InputField channelInput;
+    public VRCUrl[] urlForWindows;
+    public VRCUrl[] urlForAndroid;
     public Text text;
     public UdonSharp.Video.USharpVideoPlayer videoPlayer;
-    [UdonSynced(UdonSyncMode.None)] bool playing = false;
+    [UdonSynced(UdonSyncMode.None)] int channel = -1;
+    int lastChannel = -1;
     string screenIdPrev;
     void Start()
     {
+        SendCustomEventDelayedSeconds("InitialPlay", 3);
+    }
+    public void InitialPlay()
+    {
+        lastChannel = -1;
+        if (channel >= 0)
+        {
+            Play();
+            lastChannel = channel;
+        }
+        //text.text = "InitalPlay " + channel;
     }
     public void Pressed()
     {
         text.text = "Pressed";
         GetOwner();
         text.text = "Got Owner";
-        playing = true;
+        channel = int.Parse(channelInput.text);
+        RequestSerialization();
         text.text = "playing";
         videoPlayer.SetToAVProPlayer();
         text.text = "Before Play";
@@ -39,8 +52,9 @@ public class ButtonEx : UdonSharpBehaviour
     }
     public override void OnDeserialization()
     {
-        if (playing)
+        if (channel >= 0 && channel != lastChannel)
         {
+            lastChannel = channel;
             if (!IsOwner()) Play();
         }
     }
@@ -52,13 +66,13 @@ public class ButtonEx : UdonSharpBehaviour
         manager.SetToStreamPlayerMode();
         text.text = "PlayerMode";
 #if UNITY_ANDROID
-        manager.avProPlayer.LoadURL(urlForAndroid);
+        manager.avProPlayer.LoadURL(urlForAndroid[channel]);
         text.text = "Android Load";
 #else
-        manager.avProPlayer.LoadURL(urlForWindows);
+        manager.avProPlayer.LoadURL(urlForWindows[channel]);
         text.text = "Windows Load";
 #endif
         manager.avProPlayer.Play();
-        text.text = "Playing";
+        text.text = "Playing " + channel.ToString();
     }
 }
