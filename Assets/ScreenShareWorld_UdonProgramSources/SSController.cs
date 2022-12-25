@@ -13,7 +13,7 @@ public class SSController : UdonSharpBehaviour
     public UdonSharp.Video.USharpVideoPlayer videoPlayer;
     public VRC.SDK3.Components.VRCUrlInputField ifUrlForPC;
     public VRC.SDK3.Components.VRCUrlInputField ifUrlForQuest;
-    public Text urlTextForQuest;
+    public InputField ifTextForQuest;
     public Text text;
 
     void Start()
@@ -32,11 +32,13 @@ public class SSController : UdonSharpBehaviour
     }
     private void Update()
     {
+        text.text = "Update()";
         string url = ifUrlForPC.GetUrl().ToString();
         if (url.Length > 5)
         {
             string quest = "rtsp" + url.Substring(5);
-            urlTextForQuest.text = quest;
+            ifTextForQuest.text = quest;
+            text.text = "Update() Len > 5" + quest;
         }
     }
 

@@ -428,7 +428,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: urlTextForQuest
+      Data: ifTextForQuest
     - Name: $v
       Entry: 7
       Data: 26|UdonSharp.Compiler.FieldDefinition, UdonSharp.Editor
@@ -440,7 +440,7 @@ MonoBehaviour:
       Data: 28|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: UnityEngine.UI.Text, UnityEngine.UI
+      Data: UnityEngine.UI.InputField, UnityEngine.UI
     - Name: 
       Entry: 8
       Data: 
@@ -452,13 +452,13 @@ MonoBehaviour:
       Data: 0
     - Name: symbolResolvedTypeName
       Entry: 1
-      Data: UnityEngineUIText
+      Data: UnityEngineUIInputField
     - Name: symbolOriginalName
       Entry: 1
-      Data: urlTextForQuest
+      Data: ifTextForQuest
     - Name: symbolUniqueName
       Entry: 1
-      Data: urlTextForQuest
+      Data: ifTextForQuest
     - Name: symbolDefaultValue
       Entry: 6
       Data: 
@@ -499,8 +499,14 @@ MonoBehaviour:
       Entry: 7
       Data: 31|UdonSharp.Compiler.SymbolDefinition, UdonSharp.Editor
     - Name: internalType
-      Entry: 9
-      Data: 28
+      Entry: 7
+      Data: 32|System.RuntimeType, mscorlib
+    - Name: 
+      Entry: 1
+      Data: UnityEngine.UI.Text, UnityEngine.UI
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: declarationType
       Entry: 3
       Data: 1
@@ -524,7 +530,7 @@ MonoBehaviour:
       Data: 
     - Name: fieldAttributes
       Entry: 7
-      Data: 32|System.Collections.Generic.List`1[[System.Attribute, mscorlib]], mscorlib
+      Data: 33|System.Collections.Generic.List`1[[System.Attribute, mscorlib]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
