@@ -46,6 +46,8 @@ public class SSControllerBase: UdonSharpBehaviour
 
     public void OnClickPlay()
     {
+        text.text = "OnClickPlay()";
+
         urlForPC = ifUrlForPC.GetUrl();
         urlForQuest = ifUrlForQuest.GetUrl();
         playing++;
