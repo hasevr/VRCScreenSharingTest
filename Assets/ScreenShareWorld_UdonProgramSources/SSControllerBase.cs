@@ -36,6 +36,7 @@ public class SSControllerBase: UdonSharpBehaviour
     }
     private void Update()
     {
+        text.text = "Update()";
         string url = ifUrlForPC.GetUrl().ToString();
         if (url.Length > 5)
         {
